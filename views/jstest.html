@@ -5,32 +5,29 @@
 		<meta charset="UTF-8"/>
 	</head>
 	<body>
-		<p>Please input grade:</p>
-		<input type="text" id = "demo1"/>
-		<input type="button" onclick = "getStatus()" value = "Get status"/>
-		<div id="message"></div>
+		<input type="button" onclick = "guessNumber()" value = "Enter Number"/>
 		<script>
-			function getStatus(){
-				var clicks = 0;
-				while(clicks != 50) {
-					console.log("TRY IT AGAIN " + clicks++);
-				}	
-			}
 			function guessNumber() {
-				var x = prompt ("Enter a number");
-				try{
-					if (x == " ") throw "Empty";
-					if (isNaN(x)) throw "not a number";
-					x = Number(x);
-					if(x < 5) throw "too low";
-					if(x > 10) throw "too high";
-				}
-				catch(err){
-					alert("Input is " + err);
-				}
-				finally{
-					alert("End of Try");
-				}
+				var x = Math.floor((Math.random()*100)+1);
+				var stop = 1;
+				while(stop == 1){
+					var input = prompt("Enter a number");
+					try{
+						if (input == " ") throw "Empty";
+						if (isNaN(input)) throw "not a number";
+						input = Number(input);
+
+						if(input < x) throw "too low";
+						if(input > x) throw "too high";
+						if(input == x) {
+							stop = 0;
+							throw "Correct";
+						}	
+					}
+					catch(err){
+						alert("Input is " + err);
+					}
+				}	
 			}
 		</script>
 	</body>
