@@ -13,7 +13,7 @@
 				while(stop == 1){
 					var input = prompt("Enter a number");
 					try{
-						if (input == " ") throw "Empty";
+						if (input == "") throw "Empty";
 						if (isNaN(input)) throw "not a number";
 						input = Number(input);
 
